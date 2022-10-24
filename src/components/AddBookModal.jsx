@@ -19,6 +19,12 @@ export default function AddBookModal({ active = false, onClose = () => {} }) {
   const { data: { getAuthors = [] } = {}, loading } =
     useQuery(GET_AUTHORS_NAME);
 
+  /**
+   * Para poder usar los queries tipo Mutation se utiliza el hook useMutation el cual
+   * regresa un arreglo donde el primer parámetro una promesa y en el segundo parámetro es un objeto con loading, data y error
+   * para usarlo es necesario pasarle como primer parámetro el query que se quiere usar
+   */
+
   const [createBook, { loading: isCreating }] = useMutation(CREATE_BOOK, {
     update: (cache, { data: { createBook } }) => {
       // Get data in cache to update

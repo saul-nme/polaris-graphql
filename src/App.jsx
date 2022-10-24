@@ -8,6 +8,7 @@ import client from "./config/apolloClient";
 
 function App() {
   return (
+    // Configuración del apollo provider en donde se para como parámetro client
     <ApolloProvider client={client}>
       <AppProvider i18n={esTranslations} linkComponent={Link}>
         <Navigation />

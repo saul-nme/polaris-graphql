@@ -14,7 +14,19 @@ import useToggle from "../hooks/useToggle";
 import { GET_BOOKS } from "../queries/AuthorBookQueries";
 
 export default function BooksPage() {
+  /**
+   * Use query es un hook de apollo que te permite usar las queries que se han programado en el servidor
+   * el primer parámetro es el query que se quiere utilizar
+   * lo que regresa el hook principalmente es un objeto con data, loading y error en caso de que exista uno
+   * este hook te permite correr el query cuando carga la página
+   */
   const { data, loading, error } = useQuery(GET_BOOKS);
+  /**
+   * Cuando se require realizar un query pero no se quiere que carge al inicio de la aplicación
+   * sino hasta cuando el usuario lo desee se utiliza el hook useLazyQuery pero este en lugar
+   * de regresar un objeto regresa un arreglo en donde el primer parámetro es una función tipo promesa
+   * que se puede utilizar a lo largo de la aplicación, el segundo parámetro es un objeto con data, loading y error
+   */
   // const [fetchData ,{ data, loading, error }] = useLazyQuery(GET_BOOKS);
   const [activeModal, toggleModal] = useToggle();
 
